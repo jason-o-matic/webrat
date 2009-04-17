@@ -44,6 +44,9 @@ module Webrat
 
     # Which server the application is running on for selenium testing? Defaults to localhost
     attr_accessor :application_address
+    
+    # Is the app running at a sub-url?
+    attr_accessor :application_relative_url_root
 
     # Which server Selenium server is running on. Defaults to nil(server starts in webrat process and runs locally)
     attr_accessor :selenium_server_address
@@ -64,6 +67,7 @@ module Webrat
       self.application_environment = :test
       self.application_port = 3001
       self.application_address = 'localhost'
+      self.application_relative_url_root = nil
       self.application_framework = :rails
       self.selenium_server_port = 4444
       self.infinite_redirect_limit = 10

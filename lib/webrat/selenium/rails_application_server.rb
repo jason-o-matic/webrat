@@ -29,7 +29,8 @@ module Webrat
       end
 
       def start_command
-        "mongrel_rails start -d --chdir='#{RAILS_ROOT}' --port=#{Webrat.configuration.application_port} --environment=#{Webrat.configuration.application_environment} --pid #{pid_file} &"
+        prefix = Webrat.configuration.application_relative_url_root && "--prefix=#{Webrat.configuration.application_relative_url_root}"
+        "mongrel_rails start -d --chdir='#{RAILS_ROOT}' --port=#{Webrat.configuration.application_port} --environment=#{Webrat.configuration.application_environment} #{prefix} --pid #{pid_file} &"
       end
 
       def stop_command
